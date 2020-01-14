@@ -207,3 +207,5 @@ win_docker_cli:
 test:
 	DOWLAOND_URL=$$(bash -c "RELEASE_URL='https://github.com/kubernetes-sigs/krew/releases/' FROMAT='\$$RELEASE_URL/download/\$$TAG/krew.tar.gz' ${MAKEFILE_PATH}/git_release.sh");\
 	echo $$DOWLAOND_URL
+vim_link:
+	find ${MAKEFILE_PATH}/vim -type f -printf "\"ln -s %p $${HOME}/%f\"\n" | xargs -n 1 bash -c

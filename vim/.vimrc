@@ -1,41 +1,77 @@
-﻿"curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
+"curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
 ""https://github.com/junegunn/vim-plug
 "lynx2
-"taglist
 "tabular
 ""ctrlp
-"conque_term
 call plug#begin('~/.vim/plugged')
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'SirVer/ultisnips'
-Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 
-Plug 'https://github.com/ervandew/supertab.git'
+"Plug 'SirVer/ultisnips'
+"Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+
+"Plug 'https://github.com/ervandew/supertab.git'
 "let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
-let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabDefaultCompletionType = "context"
+
+"Plug 'notomo/ctrlb.nvim', {'do': 'npm run setup'}
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
+
+" indent
+"Plug 'https://github.com/Yggdroot/indentLine.git'
+let g:listChar_switch = 1
+"function SwitchListChar()
+"if (&g:listChar_switch == 0)
+"	set list listchars=tab:┊\  "显示隐藏字符'|', '¦', '┆', '┊'
+"	set number
+"else if (&g:listChar_switch == 1)
+"	set listchars=tab:\ \
+"	set nonumber
+"endif
+"let g:listChar_switch=(g:listChar_switch + 1)/2
+"endfunction
+"nnoremap <silent> <C-K>l <ESC>:SwitchListChar<CR>
+
+" 训练not hjkl
+Plug 'takac/vim-hardtime'
+let g:hardtime_default_on = 0
+let g:hardtime_maxcount = 10
+let g:hardtime_ignore_quickfix = 1
+let g:hardtime_allow_different_key = 1
+let g:hardtime_ignore_buffer_patterns = [ "CustomPatt[ae]rn", "NERD.*" ]
+let g:hardtime_showmsg = 1
+let g:hardtime_timeout = 500
+
+" minimap
 
 " 表格模式
 Plug 'https://github.com/dhruvasagar/vim-table-mode.git'
+"noremap <silent><C-H>:TableModeRealign
+nnoremap <silent> <C-K>t <ESC>:TableModeRealign<CR>
+inoremap <silent> <C-K>t <ESC>:TableModeRealign<CR>a
 let g:table_mode_corner='|'
-" 括号插件
-Plug 'https://github.com/kien/rainbow_parentheses.vim.git'
-syntax on " 自动语法高亮,下面不要再开这个选项
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-autocmd VimEnter * RainbowParenthesesToggle
-autocmd Syntax * RainbowParenthesesLoadRound "()
-autocmd Syntax * RainbowParenthesesLoadSquare "[]
-autocmd Syntax * RainbowParenthesesLoadBraces "{}
-"au BufNewFile,BufRead *.c,*.cpp RainbowParenthesesLoadChevrons "<>
+
+"
 Plug 'https://github.com/junegunn/vim-easy-align.git'
-"Plug 'https://github.com/vim-scripts/Align.git'
-Plug 'https://github.com/zxqfl/tabnine-vim.git'
+Plug 'https://github.com/vim-scripts/Align.git'
+map <unique> <Leader>tt	<Plug>AM_tt   "to avoid confile map
+
+"Plug 'https://github.com/zxqfl/tabnine-vim.git'
+"tabular
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+
+source ~/.vimrc.coc
+source ~/.vimrc.code
+source ~/.vimrc.mdp
 
 call plug#end()
 
 
 
 
+" ctrl-c esc
+inoremap <silent> <C-C> <ESC>
 
 "------ vim default ----
 " 其他
@@ -49,13 +85,12 @@ set autochdir " 自动切换当前目录为当前文件所在的目录
 set number " 显示行号
 "highlight CursorLine guibg=darkyellow ctermbg=darkgray "修改光标颜色
 "highlight CursorColumn guibg=darkyellow ctermbg=darkgray "修改光标颜色
-highlight CursorLine ctermbg=darkgray "修改光标颜色
-highlight CursorColumn ctermbg=darkgray "修改光标颜色
-set cursorline " 突出显示当前行
+"highlight CursorLine ctermbg=yellow    "darkgray "修改光标颜色
+"highlight CursorColumn ctermbg=yellow  "修改光标颜色
+"set cursorline " 突出显示当前行
 "set cursorcolumn
 "set cursorbind
 set ruler " 打开状态栏标尺
-set list listchars=tab:`\  "显示隐藏字符
 set nowrap "不换行显示
 
 " 搜索相关

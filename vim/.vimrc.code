@@ -1,0 +1,39 @@
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"let g:go_fmt_command = "goimports" "Run goimports along gofmt on each save     
+let g:go_fmt_command = "gofmt" "Run goimports along gofmt on each save     
+let g:go_auto_type_info = 1 "Automatically get signature/type info for object under cursor
+au filetype go inoremap <buffer> . .<C-x><C-o>
+let g:go_def_mapping_enabled = 0
+
+
+Plug 'tenfyzhong/CompleteParameter.vim'
+"inoremap <silent><expr> ( complete_parameter#pre_complete("()")
+inoremap <silent><expr> ( complete_parameter#pre_complete("(")
+smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
+imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
+smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
+imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
+
+
+"no affect in coc?
+Plug 'https://github.com/Shougo/echodoc.vim.git'
+let g:echodoc#type = "virtual" " Default value
+let g:echodoc#events = ['CompleteEvent', 'CursorHold', 'CursorHoldI', 'CursorMoved', 'CursorMovedI']
+set cmdheight=2
+"""
+
+Plug 'https://github.com/FooSoft/vim-argwrap.git'
+let g:argwrap_tail_comma = 1
+nnoremap <silent> <C-K>w <ESC>:ArgWrap<CR>
+
+
+" bracket
+Plug 'https://github.com/kien/rainbow_parentheses.vim.git'
+syntax on " 自动语法高亮,下面不要再开这个选项
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+autocmd VimEnter * RainbowParenthesesToggle
+autocmd Syntax * RainbowParenthesesLoadRound "()
+autocmd Syntax * RainbowParenthesesLoadSquare "[]
+autocmd Syntax * RainbowParenthesesLoadBraces "{}
+autocmd Syntax *.html RainbowParenthesesLoadChevrons "<>
