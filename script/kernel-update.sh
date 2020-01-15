@@ -7,7 +7,7 @@ rpm -Uvh https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
 yum --enablerepo=elrepo-kernel  list available --showduplicates   | grep ^kernel | grep elrepo-kernel
 read -rsn1 -p"will install kernel-lt; you can view https://www.kernel.org/category/releases.html; Press any key to continue";echo
 #yum --enablerepo=elrepo-kernel install kernel-ml
-yum --enablerepo=elrepo-kernel install -y kernel-lt
+yum --enablerepo=elrepo-kernel install -y kernel-ml
 
 read -rsn1 -p"set up grub2; Press any key to continue";echo
 sudo awk -F\' '$1=="menuentry " {print i++ " : " $2}' /etc/grub2.cfg ;echo \'

@@ -1,0 +1,47 @@
+apiVersion: kubeadm.k8s.io/v1beta2
+#bootstrapTokens:
+#- groups:
+#  - system:bootstrappers:kubeadm:default-node-token
+#  token: abcdef.0123456789abcdef
+#  ttl: 24h0m0s
+#  usages:
+#  - signing
+#  - authentication
+kind: InitConfiguration
+localAPIEndpoint:
+  advertiseAddress: 106.13.150.253 #172.16.0.4 #106.13.150.253 #121.17.126.239 # 1.2.3.4
+  bindPort: 6443
+nodeRegistration:
+  criSocket: /var/run/dockershim.sock
+  name: cn-north-baidu #c32010s7 # node name
+  taints:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+---
+apiServer:
+  timeoutForControlPlane: 1m0s
+  certSANs:  # add
+  - "orch.chenyongjie.com"
+apiVersion: kubeadm.k8s.io/v1beta2
+certificatesDir: /etc/kubernetes/pki
+clusterName: kubernetes
+controllerManager: {}
+dns:
+  type: CoreDNS
+etcd:
+  local:
+    dataDir: /var/lib/etcd
+imageRepository: k8s.gcr.io
+kind: ClusterConfiguration
+kubernetesVersion: v1.16.4
+controlPlaneEndpoint: "orch.chenyongjie.com:6443"  #add slb
+networking:
+  dnsDomain: cluster.local
+  podSubnet: 10.0.0.0/8  # add
+  serviceSubnet: 192.168.0.0/16 # default   10.96.0.0/12
+scheduler: {}
+## add
+---
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+kind: KubeProxyConfiguration
+mode: ipvs  # kube-proxy 模式
