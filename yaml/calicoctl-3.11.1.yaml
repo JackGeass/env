@@ -1,0 +1,53 @@
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+  name: calicoctl
+  namespace: kube-system
+  labels:
+    k8s-app: calicoctl
+spec:
+  selector:
+    matchLabels:
+      k8s-app: calicoctl
+  template:
+    metadata:
+      labels:
+        k8s-app: calicoctl
+    spec:
+      hostNetwork: true
+      serviceAccountName: calico-node
+      hostPID: true
+      containers:
+        #- name: calicoctl
+        #  image: calico/ctl:v1.0.0
+        #  command: ["/bin/sh", "-c", "while true; do sleep 3600; done"]
+        #  volumeMounts:
+        #    - name: var-run-calico
+        #      mountPath: /var/run/calico
+        #    - name: var-run-bird
+        #      mountPath: /var/run/bird
+        #  env:
+        #  - name: ETCD_ENDPOINTS
+        #    valueFrom:
+        #      configMapKeyRef:
+        #        name: calico-config
+        #        key: etcd_endpoints
+        - name: calicoctl
+          #image: calico/ctl:v3.10.2
+          image: calico/ctl:v3.11.1
+          command: ["/bin/sh", "-c", "while true; do sleep 3600; done"]
+          volumeMounts:
+            - name: var-run-calico
+              mountPath: /var/run/calico
+            - name: var-run-bird
+              mountPath: /var/run/bird
+          env:
+          - name: DATASTORE_TYPE
+            value: kubernetes
+      volumes:
+        - name: var-run-calico
+          hostPath:
+            path: /var/run/calico
+        - name: var-run-bird
+          hostPath:
+            path: /var/run/bird

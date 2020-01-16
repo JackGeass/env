@@ -37,13 +37,13 @@ export define INSTALL_PACKAGES_SET_TMUX_ZSH
 sudo sh -c "curl https://raw.githubusercontent.com/kadwanev/retry/master/retry -o /usr/local/bin/retry && chmod +x /usr/local/bin/retry"
 if which apt-get; then 
 	sudo apt update -y
-	sudo apt install -y wget zsh tmux jq git libxml2-utils p7zip-full tree unzip 
+	sudo apt install -y wget zsh tmux jq git libxml2-utils p7zip-full tree unzip  zip
 	sudo apt autoremove
 fi
 
 if which yum; then 
 	sudo yum update -y
-	sudo yum install -y zsh wget tmux jq git libxml2-utils p7zip-full tree unzip 
+	sudo yum install -y zsh wget tmux jq git libxml2-utils p7zip-full tree unzip zip
 fi
 
 

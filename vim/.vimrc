@@ -83,8 +83,8 @@ set autochdir " 自动切换当前目录为当前文件所在的目录
 
 " 显示相关
 set number " 显示行号
-"highlight CursorLine guibg=darkyellow ctermbg=darkgray "修改光标颜色
-"highlight CursorColumn guibg=darkyellow ctermbg=darkgray "修改光标颜色
+highlight CursorLine guibg=darkyellow ctermbg=darkgray "修改光标颜色
+highlight CursorColumn guibg=darkyellow ctermbg=darkgray "修改光标颜色
 "highlight CursorLine ctermbg=yellow    "darkgray "修改光标颜色
 "highlight CursorColumn ctermbg=yellow  "修改光标颜色
 "set cursorline " 突出显示当前行
