@@ -5,14 +5,14 @@ define context
 [automount]
 options = "metadata,fmask=033,dmask=022"
 #options = "fmask=033,dmask=022"
-# enabled = true
-# root = /mnt/
-# mountFsTab = true
+#enabled = true
+#root = /mnt/
+#mountFsTab = true
 
 # Enable DNS – even though these are turned on by default, we’ll specify here just to be explicit.
 [network]
 generateHosts = false
-generateResolvConf = false
+#generateResolvConf = true
 
 [interop]
 #enabled = true
