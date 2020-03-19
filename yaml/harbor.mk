@@ -36,7 +36,7 @@ registry-secret:
 
 template:registry-secret
 
-	export TOLERATIONS=${TOLERATIONS};
+	#export TOLERATIONS=${TOLERATIONS};
 	@if [ ! -z $${TOLERATIONS} ]; then
 	export __TOLERATIONS__="\
 		--set nginx.tolerations$${TOLERATIONS}\
@@ -51,7 +51,7 @@ template:registry-secret
 		--set redis.internal.tolerations$${TOLERATIONS}"
 	fi
 
-	export SELECTOR=${SELECTOR};
+	#export SELECTOR=${SELECTOR};
 	@if [ ! -z $${SELECTOR} ]; then
 	export __SELECTOR__="\
 		--set nginx.nodeSelector$${SELECTOR}\
