@@ -11,20 +11,21 @@ Plug 'tenfyzhong/CompleteParameter.vim'
 inoremap <silent><expr> ( complete_parameter#pre_complete("(")
 smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
 imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
-smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
-imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
+"smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
+"imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
 
 
 "no affect in coc?
-Plug 'https://github.com/Shougo/echodoc.vim.git'
-let g:echodoc#type = "virtual" " Default value
-let g:echodoc#events = ['CompleteEvent', 'CursorHold', 'CursorHoldI', 'CursorMoved', 'CursorMovedI']
-set cmdheight=2
+"Plug 'https://github.com/Shougo/echodoc.vim.git'
+"let g:echodoc#type = "virtual" " Default value
+"let g:echodoc#events = ['CompleteEvent', 'CursorHold', 'CursorHoldI', 'CursorMoved', 'CursorMovedI']
+"set cmdheight=2
 """
 
 Plug 'https://github.com/FooSoft/vim-argwrap.git'
 let g:argwrap_tail_comma = 1
-nnoremap <silent> <C-K>w <ESC>:ArgWrap<CR>
+"nnoremap <silent> <C-K>w <ESC>:ArgWrap<CR>
+"inoremap <silent> <C-K>w <ESC>:ArgWrap<CR>
 
 
 " bracket
@@ -37,3 +38,26 @@ autocmd Syntax * RainbowParenthesesLoadRound "()
 autocmd Syntax * RainbowParenthesesLoadSquare "[]
 autocmd Syntax * RainbowParenthesesLoadBraces "{}
 autocmd Syntax *.html RainbowParenthesesLoadChevrons "<>
+
+"minimap, need python3, 1. cmd 'pip install pynvim' 2. vim ':checkhealth provider'
+Plug 'https://github.com/severin-lemaignan/vim-minimap.git'
+nnoremap <silent> <C-K>M <ESC>:MinimapToggle<CR>
+"let g:minimap_highlight='Visual'
+"let g:minimap_show='<leader>ms'
+"let g:minimap_update='<leader>mu'
+"let g:minimap_close='<leader>gc'
+"let g:minimap_toggle='<leader>gt'
+
+
+" snippets
+"Plug 'https://github.com/andys8/vscode-jest-snippets.git' "js
+Plug 'https://github.com/SirVer/ultisnips.git'
+
+
+" Tab/Space trough projects
+Plug 'editorconfig/editorconfig-vim'
+" for syntax faster, html syntax is correct
+Plug 'sheerun/vim-polyglot' 
+" toml syntax
+Plug 'cespare/vim-toml'
+
