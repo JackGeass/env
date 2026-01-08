@@ -2,9 +2,8 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 "let g:go_fmt_command = "goimports" "Run goimports along gofmt on each save     
 let g:go_fmt_command = "gofmt" "Run goimports along gofmt on each save     
 let g:go_auto_type_info = 1 "Automatically get signature/type info for object under cursor
-au filetype go inoremap <buffer> . .<C-x><C-o>
+"au filetype go inoremap <buffer> . .<C-x><C-o> 特别卡
 let g:go_def_mapping_enabled = 0
-
 
 Plug 'tenfyzhong/CompleteParameter.vim'
 "inoremap <silent><expr> ( complete_parameter#pre_complete("()")
@@ -14,12 +13,23 @@ imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
 "smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
 "imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
 
+"git diff 
+Plug 'https://github.com/airblade/vim-gitgutter.git'
+
+" AI
+"Plug 'jessfraz/openai.vim'
+"Plug 'https://github.com/madox2/vim-ai'
+"Plug 'https://github.com/github/copilot.vim'
+"Plug 'https://github.com/CodedotAl/gpt-code-clippy'
+"Plug 'https://github.com/tom-doerr/vim_codex.git', {'do': 'pip3 install openai'}
+" ~/.vim/plugged/vim_codex/python/plugin.py
+"CrateCompletion
 
 "no affect in coc?
-"Plug 'https://github.com/Shougo/echodoc.vim.git'
-"let g:echodoc#type = "virtual" " Default value
-"let g:echodoc#events = ['CompleteEvent', 'CursorHold', 'CursorHoldI', 'CursorMoved', 'CursorMovedI']
-"set cmdheight=2
+Plug 'https://github.com/Shougo/echodoc.vim.git'
+let g:echodoc#type = "virtual" " Default value
+let g:echodoc#events = ['CompleteEvent', 'CursorHold', 'CursorHoldI', 'CursorMoved', 'CursorMovedI']
+set cmdheight=2
 """
 
 Plug 'https://github.com/FooSoft/vim-argwrap.git'
@@ -33,7 +43,7 @@ Plug 'https://github.com/kien/rainbow_parentheses.vim.git'
 syntax on " 自动语法高亮,下面不要再开这个选项
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
-autocmd VimEnter * RainbowParenthesesToggle
+"autocmd VimEnter * RainbowParenthesesToggle
 autocmd Syntax * RainbowParenthesesLoadRound "()
 autocmd Syntax * RainbowParenthesesLoadSquare "[]
 autocmd Syntax * RainbowParenthesesLoadBraces "{}
@@ -51,7 +61,7 @@ nnoremap <silent> <C-K>M <ESC>:MinimapToggle<CR>
 
 " snippets
 "Plug 'https://github.com/andys8/vscode-jest-snippets.git' "js
-Plug 'https://github.com/SirVer/ultisnips.git'
+"Plug 'https://github.com/SirVer/ultisnips.git'
 
 
 " Tab/Space trough projects

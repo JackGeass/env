@@ -1,16 +1,22 @@
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_user_config = {
+  \ 'flutter.provider.enableSnippet': v:true,
+  \ 'flutter.closingLabels.enabled': v:true,
+  \ }
 " https://octetz.com/posts/vim-as-go-ide
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 " extensions
 let g:coc_global_extensions = [
+    \ 'coc-markmap',
     \ 'coc-tsserver',
     \ 'coc-json',
    \ 'coc-html',
     \ 'coc-css',
-   \ 'coc-python',
+   \ 'coc-pyright',
 	\ 'coc-diagnostic'
     \]
+   "\ 'coc-python',
   " \ 'coc-phpls',
 " -------------------------------------------------------------------------------------------------
 " coc.nvim default settings
